@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var a = "this is a string";
+        var obj = {
+            "name":"helloworld",
+            "fruit":"apple"
+        }
+
+        localStorage.setItem("string",a);
+        localStorage.setItem("object",JSON.stringify(obj));
+        
+        document.write("The string type stored in local storage is: "+localStorage.getItem("string"));
+        document.write("<br>The object type stored in local storage: "+localStorage.getItem("object"));
+
+        sessionStorage.setItem("key","helloworld");
+        document.write("<br>The text stored in session storage: "+sessionStorage.getItem("key"));
+    </script>
+</body>
+</html>
