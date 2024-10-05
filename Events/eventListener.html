@@ -51,16 +51,16 @@
                 src="https://scontent.fbwa3-1.fna.fbcdn.net/v/t39.30808-6/461798072_122112902042511379_4455543492574534091_n.jpg?_nc_cat=111&ccb=1-7&_nc_sid=6ee11a&_nc_eui2=AeEO2N7_44fmpdScIDRE5lMekuQoXr6AWKKS5ChevoBYoqvVTq4WEK8hYe9zaiWS0mueho6-cHPujPkRrcKvo4Uq&_nc_ohc=R216HbaEcmUQ7kNvgFa_vlB&_nc_ht=scontent.fbwa3-1.fna&_nc_gid=AQubAJj2DHkUMpB3uf_P3WW&oh=00_AYCL-imvNR4EK1KBn4zo_JOVtcQL11veLHVjpWvR03qcGA&oe=6706E3ED">Karnali
             Yaks</li>
 
-            <li><a href="https://cricketnepal.org.np/">Official Cricket Association Of Nepal Website</a></li>
+        <li><a id="link" href="https://cricketnepal.org.np/">Official Cricket Association Of Nepal Website</a></li>
     </ul>
 
     <script>
 
-        document.getElementById("janakpur").addEventListener("click",function(event){
+        document.getElementById("janakpur").addEventListener("click", function (event) {
             console.log(event)
             console.log("Janakpur Bolts Clicked")
             event.stopPropagation()
-        },false);
+        }, false);
 
         //last boolean value is useCapture value. 
         //false, which is default, allows event bubbling
@@ -69,15 +69,20 @@
         //capturing means the event will be triggered at parent element first and then moves down to the target element
         //this movement is called event propagation
 
-        document.getElementById("images").addEventListener("click",function(event){
+        document.getElementById("images").addEventListener("click", function (event) {
             console.log("Teams name clicked")
-            console.log(event)
-            
-        },false);
+        }, false);
 
         //in above events, if both are true and if janakpur is clicked then ul event will be triggereed first, also called capturing
         //if both are false, janakpur will trigger first and then ul
         //to stop propagation, we use event.
+
+        document.getElementById("link").addEventListener("click", (event) => {
+            event.preventDefault(); //prevent the default task i.e. navigating to the link
+            alert("The access to that link has been prevented using preventDefault() method")
+        }, false);
+
+        
     </script>
 
 </body>
