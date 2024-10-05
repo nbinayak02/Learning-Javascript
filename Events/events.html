@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div{
+            width: 300px;
+            border:2px solid black;
+            border-radius: 10px;
+            padding:10px;
+        }
+    </style>
+</head>
+<body>
+    <div Onmouseleave="mouseLeave()">
+        <h1>Events in Javascript</h1>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa cum quasi voluptates sint? Nemo laudantium nesciunt, libero ipsa sit cumque necessitatibus dolores ad vero suscipit temporibus voluptas explicabo doloribus quasi soluta quam cum, voluptates quaerat architecto aperiam facilis nobis culpa.</p>
+    </div>
+
+    <script>
+        const div = document.getElementsByTagName("div")[0];
+        const h1 = document.getElementsByTagName("h1")[0];
+        const p = document.getElementsByTagName("p")[0];
+
+        //approach 1
+        div.onmouseover = function(){
+            div.style.backgroundColor = "#414141";
+            h1.style.color = "#fff";
+            p.style.color = "#fff";
+        }
+
+        //approach 2
+        function mouseLeave(){
+            div.style.backgroundColor = "#fff";
+            h1.style.color = "#000";
+            p.style.color = "#000";
+        }
+
+        //approach 3
+        div.addEventListener("click",function(event){
+            div.style.backgroundColor = "red";
+            h1.style.color = "#000";
+            p.style.color = "yellow";
+        },false);
+
+        
+
+    </script>
+</body>
+</html>
