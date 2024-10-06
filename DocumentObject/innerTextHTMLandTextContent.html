@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        span{
+            font-weight: bold;
+        }
+        #div2 > span, #div3 > span{
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <h1>innerHTML vs. innerText vs. textContent</h1>
+    <div id="div1">This is <span>div1</span></div>
+    <div id="div2">This is <span>div2</span></div>
+    <div id="div3">This is <span>div3</span></div>
+
+    <script>
+
+        const div1 = document.getElementById("div1");
+        const div2 = document.getElementById("div2");
+        const div3 = document.getElementById("div3");
+
+        //innerHTML
+        console.log("innerHTML = "+div1.innerHTML); //returns html element also
+        div1.innerHTML += "<i>innerHTML</i>"; //html element is executed
+
+        //innerText
+        console.log("innerText = "+div2.innerText) //doesnot return html element, only returns the visible text
+        div2.innerText += "<i>innerText</i>"; //doesnot execute html element 
+
+
+        //textContent
+        console.log("textContent = "+div3.textContent)//doesnot return html element, also returns the hidden text
+        div3.textContent += "<i>textContent</i>";//doesnot execute html element
+
+
+    </script>
+</body>
+</html>
