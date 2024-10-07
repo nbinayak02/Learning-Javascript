@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div>
+        <h1>Query Selector</h1>
+        <p id="main">The query selector selects the first matching html element</p>
+        <p class="second">Lorem ipsum dolor sit amet consectetur adipisicing elit. Nulla dolore veritatis aliquid debitis delectus!
+            Consequatur omnis alias nemo voluptatem exercitationem?</p>
+    </div>
+
+    <div>
+        <h2>Query Selector All</h2>
+        <p id="main">The query selector all selects all matching html element</p>
+        <p class="second">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dolor sunt natus facere! Architecto facere, eum,
+            est similique possimus nisi reprehenderit deserunt ipsum molestias nam maiores quibusdam nulla porro minima
+            molestiae.</p>
+    </div>
+
+    <script>
+        const div = document.querySelector("div");
+        div.style.border = "1px dashed black";
+        div.style.padding = "15px";
+
+        const pMain = document.querySelectorAll("#main");
+        pMain.forEach(function(element){
+            element.style.backgroundColor = "green";
+            element.style.padding = "15px";
+            element.style.color = "#fff";
+        });
+
+        const pSec = document.querySelector(".second");
+        pSec.style.backgroundColor = "purple";
+        pSec.style.color = "#fff";
+        pSec.style.padding = "15px";
+    </script>
+</body>
+
+</html>
