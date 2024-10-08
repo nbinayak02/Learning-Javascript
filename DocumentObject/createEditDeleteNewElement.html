@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    const newElement = document.createElement("div");
+    
+    newElement.classList = "container";
+    newElement.setAttribute("title","new attribute") //custom attribute
+    newElement.style.backgroundColor = "red";
+    newElement.innerHTML = "<b>This is a div </b>";
+    
+    console.log(newElement)
+    
+    document.body.appendChild(newElement)
+
+
+    var months = ['jan','feb','mar','apr','may','jun'];
+
+    const ul = document.createElement("ul");
+    console.log(ul)
+
+    months.forEach(function(mth){
+        const li = document.createElement("li");
+        // li.textContent = mth; for better optimization use below approach
+        li.appendChild(document.createTextNode(mth))
+        ul.appendChild(li);
+        // console.log(li)
+    })
+
+    document.body.appendChild(ul)
+
+
+    //edit
+    const fourthLi = document.querySelector("li:nth-child(4)")
+    // console.log(fourthLi)
+    const newLi = document.createElement("li")
+    newLi.textContent = "Hello world"
+    fourthLi.replaceWith(newLi)
+//remove
+ul.removeChild(document.querySelector("li:last-child"));
+
+</script>
+</html>
