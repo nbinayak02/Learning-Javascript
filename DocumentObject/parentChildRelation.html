@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="week">
+        <!-- This is a comment  -->
+        <div class="day">Sunday</div>
+        <div class="day">Monday</div>
+        <div class="day">Tuesday</div>
+        <div class="day">Wednesday</div>
+        <div class="day">Thursday</div>
+        <div class="day">Friday</div>
+        <div class="day">Saturday</div>
+    </div>
+
+    <script>
+        const parent = document.querySelector(".week")
+        console.log(parent)
+
+        console.log(parent.children)
+
+        console.log(parent.children[2])
+
+        console.log(parent.children[2].innerHTML)
+
+        for(let i = 0; i<parent.children.length; i++){
+            console.log(parent.children[i].innerHTML+"\n")
+        }
+
+        console.log(parent.childNodes) //node list contains text, line breaks, comments also
+
+        console.log(parent.firstElementChild)
+        console.log(parent.lastElementChild)
+
+        //reaching to parent from child
+        const childDiv = document.querySelector(".day")
+        console.log(childDiv)
+        console.log(childDiv.parentElement) 
+        console.log(childDiv.nextElementSibling)
+    </script>
+</body>
+</html>
