@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>This is the Heading</h1>
+    <button class="stop">Stop</button>
+    <script>
+        // //method1
+        // setTimeout(function(){
+        //     console.log("Timeout called after 2 seconds of page loading")
+        // },2000)
+
+        // function display(){
+        //     console.log("Timeout called from method 2")
+        // }
+
+        // //method2
+        // setTimeout(display(),4000)
+
+        const change = function(){
+            document.querySelector("h1").innerHTML = "Welcome to Nepal";
+            console.log("Timeout called from method 3");
+        }
+
+        //method3
+        const changeID = setTimeout(change, 2000);
+
+        document.querySelector(".stop").addEventListener("click",function(){
+            clearTimeout(changeID)
+        });
+        
+    </script>
+</body>
+</html>

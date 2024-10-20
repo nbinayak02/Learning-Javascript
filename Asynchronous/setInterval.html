@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>New Items will be added every 1 second</h1>
+    <div class="timer">Page will refresh after <span id="sec">90</span> seconds</div>
+    <button class="start">Start</button>
+    <button class="stop">Stop</button>
+    <div class="items"></div>
+
+    <script>
+      let i = 0;
+      let intervalID;
+
+      const insert = function () {
+        i++;
+        document.querySelector(".items").innerHTML +=
+          "<p>Item Number " + i + " added</p>";
+      };
+
+      document.querySelector(".start").addEventListener("click", function () {
+        if(!intervalID){
+             intervalID = setInterval(insert, 1000);
+        }
+      });
+
+      document.querySelector(".stop").addEventListener("click",function(){
+        clearInterval(intervalID)
+        intervalID = null;
+      })
+
+      const decrese = function(){
+        let sec = document.querySelector("#sec").innerHTML;
+        sec -= 1;
+        document.querySelector("#sec").innerHTML = sec;
+        if(sec===0){
+            window.location.reload();
+        }
+      }
+
+      setInterval(decrese, 1000);
+    </script>
+  </body>
+</html>
