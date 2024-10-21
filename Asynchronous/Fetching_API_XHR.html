@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
+      rel="stylesheet"
+    />
+    <title>Profile Card</title>
+    <style>
+      * {
+        margin: 0px;
+        padding: 0px;
+        box-sizing: border-box;
+      }
+      body {
+        height: 100vh;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+        align-items: center;
+        background-color: #f4f4f4;
+        font-family: "Poppins", sans-serif;
+      }
+      .profile-card {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        max-width: 370px;
+        width: 100%;
+        background-color: white;
+        box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.1);
+        border-radius: 24px;
+      }
+      .profile-card .background {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        height: 50%;
+        background-color: #4070f4;
+        border-radius: 20px 20px 0 0;
+      }
+      .profile-card .image-area {
+        width: 150px;
+        height: 150px;
+        border: 4px solid #4070f4;
+        border-radius: 50%;
+        margin-top: 20px;
+        position: relative;
+        top: 20px;
+      }
+      .image-area .profile-image {
+        width: 100%;
+        height: 100%;
+        border-radius: 50%;
+        border: 5px solid white;
+      }
+      .text-content {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        margin-top: 30px;
+      }
+      .text-content .text1 {
+        font-weight: 600;
+        font-size: 20px;
+      }
+      .bio {
+        margin: 10px 20px 0 20px;
+        text-align: justify;
+      }
+      .profile-card .social-media {
+        margin-top: 20px;
+        display: flex;
+        justify-content: center;
+        gap: 30px;
+      }
+      .social-media .link {
+        background-color: #4070f4;
+        width: 35px;
+        height: 35px;
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: white;
+        text-decoration: none;
+        font-size: 18px;
+        font-weight: 600;
+      }
+
+      .profile-card .buttons {
+        margin-top: 30px;
+        display: flex;
+        justify-content: center;
+        gap: 30px;
+      }
+
+      .button {
+        width: 120px;
+        height: 40px;
+        background-color: #4070f4;
+        color: white;
+        border: none;
+        border-radius: 25px;
+        font-size: 14px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+      }
+
+      .button:hover {
+        background-color: #5d85f3;
+      }
+
+      .profile-card .stats {
+        margin-top: 30px;
+        margin-left: 35px;
+        margin-bottom: 20px;
+      }
+
+      .data .number {
+        margin-right: 10px;
+        padding-right: 10px;
+        border-right: 5px solid #f4f4f4;
+      }
+      .data .bx {
+        margin-right: 3px;
+        font-size: 18px;
+      }
+      .data .number:last-child {
+        border-right: none;
+      }
+      input[type="text"] {
+        font-size: 16px;
+        height: 40px;
+        padding: 5px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="search">
+      <form id="search-form">
+        <input type="text" name="searchTxt" placeholder="Username" />
+        <input type="submit" name="submit" value="Search" class="button" />
+      </form>
+    </div>
+    <div class="profile-card">
+      <div class="background">
+        <div class="image-area">
+          <img src="" alt="profile image" class="profile-image" />
+        </div>
+      </div>
+      <div class="text-content">
+        <div class="text1">Binayak Niraula</div>
+        <div class="text2">Full Stack Developer</div>
+        <p class="bio"></p>
+      </div>
+      <div class="social-media">
+        <a href="#" class="link" style="background-color: #1877f2"
+          ><i class="bx bxl-github"></i
+        ></a>
+      </div>
+      <div class="buttons">
+        <button class="button">Follow</button>
+        <button class="button">Message</button>
+      </div>
+      <div class="stats">
+        <div class="data">
+          <span class="number follower">Followers</span>
+          <span class="number following">Following</span>
+          <span class="number repos">Repositories</span>
+        </div>
+      </div>
+    </div>
+    <script>
+      // XMLHttpRequest (XHR) objects are used to interact with servers. You can retrieve data from a URL without having to do a full page refresh. This enables a Web page to update just part of a page without disrupting what the user is doing.
+
+      document.querySelector(".profile-card").style.display = "none";
+
+      document
+        .getElementById("search-form")
+        .addEventListener("submit", function (event) {
+          event.preventDefault();
+          const iptxt = document.getElementsByName("searchTxt")[0].value;
+          const githubApiUrl = "https://api.github.com/users/" + iptxt;
+
+          var xhr = new XMLHttpRequest();
+          xhr.open("GET", githubApiUrl, true);
+
+          xhr.onreadystatechange = function () {
+            // console.log(xhr.readyState);
+            // The XMLHttpRequest.readyState property returns the state an XMLHttpRequest client is in. An XHR client exists in one of the following states:
+
+            // Value	State	Description
+            // 0	UNSENT	Client has been created. open() not called yet.
+            // 1	OPENED	open() has been called.
+            // 2	HEADERS_RECEIVED	send() has been called, and headers and status are available.
+            // 3	LOADING	Downloading; responseText holds partial data.
+            // 4	DONE	The operation is complete.
+
+
+            if (xhr.readyState === 4 && xhr.status === 200) {
+              const rsptxt = JSON.parse(this.responseText);
+            //  responseText:  Returns a string that contains the response to the request as text, or null if the request was unsuccessful or has not yet been sent. 
+
+            // status: HTTP response status codes indicate whether a specific HTTP request has been successfully completed. 200 OK, 404 Not Found: The server cannot find the requested resource. In the browser, this means the URL is not recognized. In an API, this can also mean that the endpoint is valid but the resource itself does not exist. Servers may also send this response instead of 403 Forbidden to hide the existence of a resource from an unauthorized client. This response code is probably the most well known due to its frequent occurrence on the web.
+
+              changeStyle(rsptxt);
+            } else if (xhr.readyState === 4 && xhr.status === 404) {
+              alert("User not found! Status code: " + xhr.status);
+            }
+          };
+          xhr.send();
+        });
+
+      function changeStyle(rsptxt) {
+        document.querySelector(".profile-card").style.display = "block";
+        document.querySelector(".text1").innerHTML = rsptxt.name;
+        document.querySelector(".text2").innerHTML = rsptxt.location;
+        document.querySelector("img").src = rsptxt.avatar_url;
+        document.querySelector(".bio").innerHTML = rsptxt.bio;
+        document.querySelector("a").href = rsptxt.html_url;
+        document.querySelector(".follower").innerHTML =
+          rsptxt.followers + " Followers";
+        document.querySelector(".following").innerHTML =
+          rsptxt.following + " Following";
+        document.querySelector(".repos").innerHTML =
+          rsptxt.public_repos + " Repos";
+      }
+    </script>
+  </body>
+</html>
