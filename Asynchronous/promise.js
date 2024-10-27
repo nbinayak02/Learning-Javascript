@@ -119,3 +119,20 @@ fetch("https://jsonplaceholder.typicode.com/users")
   })
   .then((objdata) => console.log(objdata))
   .catch((error) => console.log(error));
+
+
+  //then can receive both success and fail
+  const promise = new Promise((resolve, reject) => {
+    let e = true
+    if(!e){
+        resolve("hello resolve")
+    } else{
+        reject("hello reject")
+    }
+})
+
+promise.then((success) => {
+    console.log("Success "+success)
+}, (fail) => {
+    console.log("Failed "+fail)
+})
