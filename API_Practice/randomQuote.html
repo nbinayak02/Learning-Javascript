@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>Random Quotes</h1>
+    <h3>Refresh the page to load new quote</h3>
+    <p id="quote"></p>
+    <p id="author"></p>
+    Tags:
+    <ul id="tags"></ul>
+
+    <script>
+      const quoteDisp = document.getElementById("quote");
+      const authorDisp = document.getElementById("author");
+      const tagsDisp = document.getElementById("tags");
+      const URL = "https://api.freeapi.app/api/v1/public/quotes/quote/random";
+
+      fetch(URL)
+        .then((response) => {
+          // response.headers.forEach((key,value)=>console.log(`Key: ${key}, Value: ${value}`)); //prints what's on response header
+
+          if (!response.ok) {
+            throw new Error(response.statusText);
+          }
+          return response.json();
+        })
+        .then((rsp) => {
+          let quote = rsp.data;
+          quoteDisp.innerText = quote.content;
+          authorDisp.innerText = "-By " + quote.author;
+          showTags(quote.tags);
+        })
+        .catch((error) => {
+          console.error(error);
+        });
+
+      function showTags(tags) {
+        tagsDisp.innerHTML = "";
+
+        tags.forEach((element) => {
+          let li = document.createElement("li");
+          li.textContent = element;
+          tagsDisp.appendChild(li);
+        });
+      }
+
+
+    </script>
+  </body>
+</html>
