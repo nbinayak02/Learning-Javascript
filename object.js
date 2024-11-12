@@ -53,3 +53,11 @@ console.log(boy[key])
 Object.freeze(boy);
 boy.name = "Zero boy"; //this change doesnt reflect because object is frozen
 console.log(boy)
+
+//using function as value in object
+pens.info = function(){
+    console.log("This pen is ", this.type);
+}
+
+console.log(pens.info) //returns reference of function
+console.log(pens.info()) //returns by executing function
