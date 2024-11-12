@@ -41,10 +41,15 @@ boy[key] = "Arijit";
 console.log(boy[key])
 
 //computed properties
-let fruit = prompt("Enter fruit name", "apple");
-let fruits = {
-    [fruit]:"300 per kg"
-}
-console.log(fruits.apple) //if input is apple
+// let fruit = prompt("Enter fruit name", "apple");
+// let fruits = {
+//     [fruit]:"300 per kg"
+// }
+// console.log(fruits.apple) //if input is apple
 
 
+// A frozen object can no longer be changed: new properties cannot be added, existing properties cannot be removed, their enumerability, configurability, writability, or value cannot be changed, and the object's prototype cannot be re-assigned.
+
+Object.freeze(boy);
+boy.name = "Zero boy"; //this change doesnt reflect because object is frozen
+console.log(boy)
