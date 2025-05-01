@@ -1,0 +1,2 @@
+The nodejs includes fs module that enables
+to perform read/write operations on disks file
