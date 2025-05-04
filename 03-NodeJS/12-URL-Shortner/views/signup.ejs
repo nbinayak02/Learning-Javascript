@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Signup</title>
+    <style>
+        body{
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+        }
+        input{
+            padding: 5px;
+            width: 100%;
+            margin-top: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <h2>SignUp</h2>
+        <form action="/user" method="post" style="width: 300px;">
+            Username: <input type="text" name="name" placeholder="Your name here" required><br><br>
+            Email: <input type="email" name="email" placeholder="john@example.com" required><br><br>
+            Password: <input type="password" name="password" required><br><br>
+            <button style="width: 100%; padding:5px">SignUp</button>
+        </form>
+    </div>
+</body>
+</html>
