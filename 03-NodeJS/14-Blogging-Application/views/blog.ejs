@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <%- include("./partials/head") %>
+    <title>Blog</title>
+</head>
+
+<body>
+  <%- include("./partials/nav") %>
+    <div class="container mt-4">
+      <h1>
+        <%= blog.title %>
+      </h1>
+      <div class=" d-flex flex-row justify-content-center pt-2">
+        <img src="<%= blog.coverImageUrl %>" alt="Cover Image" width="700" height="400" class="rounded-3" />
+      </div>
+      <p class="pt-2">
+
+      <div class="card mb-3" style="max-width: 400px;">
+        <div class="row g-0">
+          <div class="col-md-2 d-flex justify-content-center p-1">
+            <img src="/images/default.svg" class="img-fluid rounded-start" alt="author image" width="120" height="120">
+          </div>
+          <div class="col-md-8">
+            <div class="card-body">
+              <h5 class="card-title">
+                <%= blog.createdBy.fullName %>
+              </h5>
+              <%= new Date(blog.createdBy.createdAt).toLocaleDateString("en-CA") %>
+
+            </div>
+          </div>
+        </div>
+      </div>
+
+      </p>
+      <p class="pt-2" style="font-size: 20px; text-align: justify; ">
+        <%= blog.body %>
+      </p>
+
+      <div class="container mt-4">
+        <h2>Comments</h2>
+
+        <% if (locals.user) { %>
+
+
+          <form action="/blogs/comment/<%= blog._id%>" method="post">
+
+            <div class="mb-3">
+              <input type="text" class="form-control" name="content" placeholder="Add your comments..." />
+            </div>
+
+            <button type="submit" class="btn btn-primary mb-4">Post Comment</button>
+          </form>
+
+          
+          
+          <% } else { %>
+            <p>Login to post your comment.</p>
+            <% } %>
+            <div>
+              <% comments.forEach(comment=> { %>
+  
+                <div class="list-group">
+                  <div class="list-group-item" aria-current="true">
+                    <div class="d-flex w-100 justify-content-between">
+                      <h5 class="mb-1">
+                        <%= comment.content %>
+                      </h5>
+                      <small>
+                        <%= new Date(comment.createdAt).toLocaleDateString("en-CA") %>
+                      </small>
+                    </div>
+                    <p class="mb-1">
+                      <%= comment.userId.fullName %>
+                    </p>
+                  </div>
+                </div>
+                
+                <p class="mt-5"></p>
+                <% }) %>
+            </div>
+      </div>
+
+    </div>
+    <%- include("./partials/script") %>
+</body>
+
+</html>

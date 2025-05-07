@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <%- include("./partials/head") %>
+    <title>Homepage</title>
+</head>
+
+<body>
+  <%- include("./partials/nav") %>
+
+  
+    <div class="container mt-4">
+      <h2 class="m-3">My Blogs</h2>
+      <div class="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-4">
+        <% myBlogs.forEach(blog=> { %>
+          <div class="col">
+            <div class="card h-100">
+              <img src="<%= blog.coverImageUrl %>" class="card-img-top" alt="...">
+              <div class="card-body">
+                <h5 class="card-title">
+                  <%= blog.title %>
+                </h5>
+                <a href="/blogs/update/<%= blog._id %>" class="btn btn-primary mt-2">Update</a>
+                <button type="button" class="btn btn-danger mt-2" data-bs-toggle="modal" data-bs-target="#modal-<%= blog._id %>">
+                  Delete
+                </button>
+
+              </div>
+            </div>
+          </div>
+
+          <!-- Modal -->
+      <div class="modal fade" id="modal-<%= blog._id %>" tabindex="-1" aria-labelledby="exampleModalLabel"
+      aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5" id="exampleModalLabel">Delete Blog</h1>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            Are you sure you want to delete a blog?
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            <a href="/blogs/delete/<%= blog._id %>" class="btn btn-danger">Delete</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+          <% }) %>
+      </div>
+
+      
+
+    </div>
+
+    <p class="mt-5"></p>
+    <%- include("./partials/script") %>
+</body>
+
+</html>
