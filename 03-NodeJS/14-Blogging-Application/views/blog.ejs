@@ -19,8 +19,8 @@
 
       <div class="card mb-3" style="max-width: 400px;">
         <div class="row g-0">
-          <div class="col-md-2 d-flex justify-content-center p-1">
-            <img src="/images/default.svg" class="img-fluid rounded-start" alt="author image" width="120" height="120">
+          <div class="col-md-2">
+            <img src="<%= blog.createdBy.profileImageUrl %>" class="rounded-circle img-thumbnail mt-3 m-2" alt="" width="100px" height="100px" style="object-fit: cover;">
           </div>
           <div class="col-md-8">
             <div class="card-body">
@@ -35,9 +35,9 @@
       </div>
 
       </p>
-      <p class="pt-2" style="font-size: 20px; text-align: justify; ">
-        <%= blog.body %>
-      </p>
+      <div class="pt-2 fs-5">
+        <%- blogContent %>
+      </div>
 
       <div class="container mt-4">
         <h2>Comments</h2>
@@ -54,33 +54,41 @@
             <button type="submit" class="btn btn-primary mb-4">Post Comment</button>
           </form>
 
-          
-          
+
+
           <% } else { %>
             <p>Login to post your comment.</p>
             <% } %>
-            <div>
-              <% comments.forEach(comment=> { %>
-  
-                <div class="list-group">
-                  <div class="list-group-item" aria-current="true">
-                    <div class="d-flex w-100 justify-content-between">
-                      <h5 class="mb-1">
-                        <%= comment.content %>
-                      </h5>
-                      <small>
-                        <%= new Date(comment.createdAt).toLocaleDateString("en-CA") %>
-                      </small>
+              <div>
+                <% comments.forEach(comment=> { %>
+
+                  <div class="card mb-3">
+                    <div class="row g-0">
+                      <div class="col-md-1">
+                        <img src="<%= comment.userId.profileImageUrl %>" class="rounded-circle img-thumbnail mt-3 m-2" 
+                        alt="profile image"
+                        style="width: 100px; height: 100px; object-fit: cover;">
+                      </div>
+                      <div class="col-md-11">
+                        <div class="card-body">
+                          <h5 class="card-title">
+                            <%= comment.userId.fullName %>
+                          </h5>
+                          <p class="card-text">
+                            <%= comment.content %>
+                          </p>
+                          <%= new Date(comment.createdAt).toLocaleDateString("en-CA") %>
+                            <p class="card-text"><small class="text-body-secondary">
+                                <%= %>
+                              </small></p>
+                        </div>
+                      </div>
                     </div>
-                    <p class="mb-1">
-                      <%= comment.userId.fullName %>
-                    </p>
                   </div>
-                </div>
-                
-                <p class="mt-5"></p>
-                <% }) %>
-            </div>
+
+                  <p class="mt-5"></p>
+                  <% }) %>
+              </div>
       </div>
 
     </div>

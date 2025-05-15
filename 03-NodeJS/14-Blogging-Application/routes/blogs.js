@@ -3,6 +3,8 @@ const multer = require("multer");
 const path = require("path");
 const Blogs = require("../models/blogs");
 const Comments = require("../models/comments");
+const { marked } = require("marked");
+const sanitize = require("sanitize-html");
 const router = Router();
 
 const storage = multer.diskStorage({
@@ -61,6 +63,7 @@ router.post("/update/:id", async (req, res) => {
 
 router.get("/:id", async (req, res) => {
   const blog = await Blogs.findById(req.params.id).populate("createdBy");
+  const blogContent = sanitize(marked(blog.body));
   const comments = await Comments.find({ blogId: req.params.id }).populate(
     "userId"
   );
@@ -68,6 +71,7 @@ router.get("/:id", async (req, res) => {
     user: req.user,
     blog,
     comments,
+    blogContent,
   });
 });
 

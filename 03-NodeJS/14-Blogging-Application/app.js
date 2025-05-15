@@ -1,3 +1,4 @@
+require("dotenv").config();
 const express = require("express");
 const path = require("path");
 const userRoute = require("./routes/users");
@@ -9,9 +10,9 @@ const { checkAuthCookie } = require("./middlewares/authentication");
 const Blogs = require("./models/blogs");
 const app = express();
 
-const PORT = 8000;
+const PORT = process.env.PORT || 8000;
 
-mongoose.connect("mongodb://localhost:27017/blogging-application")
+mongoose.connect(process.env.MONGO_URL)
   .then(() => console.log("Connected to mongodb database"))
   .catch((error) =>
     console.log("ERROR: Failed to connnect to database - ", error)

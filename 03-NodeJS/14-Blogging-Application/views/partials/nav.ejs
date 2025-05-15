@@ -24,14 +24,14 @@
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle active" href="#" role="button" data-bs-toggle="dropdown"
               aria-expanded="false">
-
               <%= locals.user.name %>
-
             </a>
-            <ul class="dropdown-menu">
-              <li><a class="dropdown-item" href="/user/logout">Logout</a></li>
 
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="/user/profile">My Profile</a></li>
+              <li><a class="dropdown-item" href="/user/logout">Logout</a></li>
             </ul>
+
           </li>
           <% } else { %>
             <li class="nav-item">
