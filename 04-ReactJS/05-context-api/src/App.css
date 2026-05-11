@@ -1,0 +1,30 @@
+.App {
+  
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: flex-start;
+  flex-wrap: wrap;
+}
+
+.itemCard, .Cart{
+  margin-top: 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background-color:blue;
+  padding: 10px;
+  border-radius: 10px;
+  color: white;
+}
+
+.itemCard button{
+  height: 30px;
+  cursor: pointer;
+}
+
+.Cart{
+  background-color: brown;
+  font-weight: bold;
+  list-style-type: decimal;
+}

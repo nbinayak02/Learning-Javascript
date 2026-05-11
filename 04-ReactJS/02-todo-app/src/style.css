@@ -1,0 +1,42 @@
+body{
+    background-color: lightblue;
+    height: 100vh;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+.todo-container {
+    width: 400px;
+    padding: 15px;
+    background-color: white;
+    border-radius: 20px;
+}
+
+.todo-header {
+    font-size: 24px;
+    font-family: "Verdana", Geneva, Tahoma, sans-serif;
+}
+
+.todo-list-item{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.todo-list-item-name{
+    flex-basis: 320px;
+    justify-content: flex-start;
+}
+
+.button{
+    width: 100%;
+    font-size: 16px;
+    padding: 10px;
+    font-weight: bold;
+    outline: none;
+    border:none;
+    border-radius: 20px;
+    
+}

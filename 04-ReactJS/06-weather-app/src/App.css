@@ -1,0 +1,67 @@
+.App{
+  width: 450px;
+  /* height: 400px; */
+  background:linear-gradient(#8b58d1, #3633a8);
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  padding-top: 20px;
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: #fff;
+}
+
+h3{
+  font-size: 50px;
+}
+
+h5{
+  font-size: 20px;
+}
+
+input{
+  border-radius: 6px;
+  font-size: 100%;
+  height: 30px;
+  line-height: 1.15;
+  outline: none;
+  width: 100%;
+  border-width: 0;
+  padding-left: 10px;
+}
+.button {
+  background-color: #fff;
+  border-radius: 6px;
+  border-width: 0;
+  color: #000;
+  cursor: pointer;
+  font-family: -apple-system,system-ui,"Segoe UI",Roboto,"Helvetica Neue",Ubuntu,sans-serif;
+  font-size: 100%;
+  height: 30px;
+  line-height: 1.15;
+  outline: none;
+  transition: all .2s;
+  width: 25%;
+}
+
+.button:hover{
+  background-color: #ffffffed;
+}
+
+.ip-btn{
+  display: flex;
+  gap: 30px;
+}
+
+.weather-card{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.weather-card .icons-data{
+  display: flex;
+  flex-direction: row;
+  gap: 30px;
+  font-size: 14px;
+}
